@@ -13,15 +13,15 @@ module.exports.run = async (bot, message, args) => {
     }
 
     voice.channel.join().then((connection) => {
-        connection.play(path.join(__dirname, 'virus.mp3'));
+        const slurs = ['nigger', 'virus', 'tacobell', 'mutahar', 'vine'];
+        const random = Math.floor(Math.random() * slurs.length);
+        connection.play(path.join('./sfx/' + slurs[random] + '.mp3'));
     });
-
-    voice.channel.leave();
 }
 
 module.exports.config = {
     name: "play",
-    description: "plays a slur in a voice channel",
+    description: "plays a random sound effect in a voice channel",
     usage: "b!play <arg1>",
     accessableby: "Members",
     aliases: ['p']
