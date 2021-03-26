@@ -2,7 +2,11 @@ const Discord = require("discord.js")
 const botconfig = require("../botsettings.json");
 
 module.exports.run = async (bot, message, args) => {
-    return message.reply('not done yet');
+    const { guild } = message
+
+    var user = guild.members.random; 
+    //var user2 = message.guild.members.random();
+    return message.channel.send(`${user}`);
 }
 
 module.exports.config = {
