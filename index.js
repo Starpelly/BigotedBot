@@ -1,134 +1,48 @@
-const Discord = require('discord.js')
-const client = new Discord.Client()
+const Discord = require('discord.js');
+const botsettings = require('./botsettings.json');
 
-const config = require('./config.json')
-const command = require('./command')
-const Canvas = require('canvas');
+const bot = new Discord.Client({disableEveryone: true});
 
-const { prefix } = require('./config.json')
+require("./util/eventHandler")(bot);
 
-client.on('ready', () => {
-    console.log('ready');
-    client.user.setActivity('ur mom lol', {type: 'COMPETING'});
+const fs = require("fs");
 
-    command(client, 'serverinfo', (message) => {
-        const { guild } = message
+const DisTube = require('distube');
+bot.distube = new DisTube(bot, { searchSongs: false, emitNewSongOnly: true });
 
-        const { name, region, memberCount, } = guild
-        const icon = guild.iconURL()
+bot.commands = new Discord.Collection();
+bot.aliases = new Discord.Collection();
 
-        const embed = new Discord.MessageEmbed()
-            .setTitle(`Server info for "${name}"`)
-            .setThumbnail(icon)
-            .addFields(
-                {
-                    name: 'Region',
-                    value: region,
-                },
-                {
-                    name: 'Members',
-                    value: memberCount,
-                },
-            )
-            .setFooter('thats all you get im bored')
+fs.readdir("./commands/", (err, files) => {
 
-        message.reply('every bot has this right?', embed)
-    })
+    if(err) console.log(err)
 
-    command(client, 'help', (message) => {
-        message.reply(`my prefix is ${prefix}, you can figure out the rest`)
-    })
+    let jsfile = files.filter(f => f.split(".").pop() === "js") 
+    if(jsfile.length <= 0) {
+         return console.log("[LOGS] Couldn't Find Commands!");
+    }
 
-    command(client, 'antitrans', async (message) => {
+    jsfile.forEach((f, i) => {
+        let pull = require(`./commands/${f}`);
+        bot.commands.set(pull.config.name, pull);  
+        pull.config.aliases.forEach(alias => {
+            bot.aliases.set(alias, pull.config.name)
+        });
+    });
+});
 
-        const canvas = Canvas.createCanvas(400, 250)
-        const ctx = canvas.getContext('2d');
+bot.on("message", async message => {
+    if(message.author.bot || message.channel.type === "dm") return;
 
-        const background = await Canvas.loadImage('./images/trans.png');
-        ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
-        const background2 = await Canvas.loadImage('./images/anti.png');
-        ctx.drawImage(background2, 0, 0, canvas.width, canvas.height);
+    let prefix = botsettings.prefix;
+    let messageArray = message.content.split(" ");
+    let cmd = messageArray[0];
+    let args = messageArray.slice(1);
 
+    if(!message.content.startsWith(prefix)) return;
+    let commandfile = bot.commands.get(cmd.slice(prefix.length)) || bot.commands.get(bot.aliases.get(cmd.slice(prefix.length)))
+    if(commandfile) commandfile.run(bot,message,args)
 
-        const avatar = await Canvas.loadImage(message.author.displayAvatarURL({ format: 'jpg'}));
-        ctx.drawImage(avatar, 95, 25, 200, 200);
-
-        // Select the style that will be used to fill the text in
-        ctx.fillStyle = '#ffffff';
-        ctx.strokeStyle = 'black';
-        ctx.lineWidth = 4;
-
-        ctx.font = '38px Impact';
-        ctx.strokeText('SAYS FUCK TRANS RIGHTS!', 4 , 245);
-        ctx.fillText('SAYS FUCK TRANS RIGHTS!', 4 , 245);
-
-        ctx.font = '60px Impact';
-
-        ctx.textAlign = "center";
-        // Actually fill the text with a solid color
-        ctx.strokeText(message.author.username.toUpperCase(), 200 , 53);
-        ctx.fillText(message.author.username.toUpperCase(), 200 , 53);
-
-        ctx.beginPath();
-        ctx.arc(125, 125, 100, 0, Math.PI * 2, true);
-        ctx.closePath();
-        ctx.clip();
-
-        const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'anti-trans-pride.png');
-        
-        message.channel.send(attachment);
-    })
-
-    command(client, 'slur', (message) => {
-        const slurs = ["nigger", "faggot", "tranny", "coon", "cracker", 'crow', 'nazi', 'jap' , 'malon', 'nigro', 'walroose', 'monkey', 'redskin', 'OREO LAMOOOO'];
-        const random = Math.floor(Math.random() * slurs.length);
-
-        message.reply(slurs[random]);
-    })
-
-    command(client, 'fucksomeone', (message) => {
-        message.reply('havent started yet lol');
-    })
-
-    client.on('message', (message) => {
-
-        msg = message.content.toLowerCase();
-
-        switch (msg) {
-            case 'blm':
-                message.reply('paper beats rock', {files: ["https://pm1.narvii.com/6687/838332442a6553467f57b045da3d2e9cfccb4c75_hq.jpg"]});
-                break;
-            case 'blacklivesmatter':
-                message.reply('paper beats rock', {files: ["https://pm1.narvii.com/6687/838332442a6553467f57b045da3d2e9cfccb4c75_hq.jpg"]});
-                break;
-            case 'black lives matter':
-                message.reply('paper beats rock', {files: ["https://pm1.narvii.com/6687/838332442a6553467f57b045da3d2e9cfccb4c75_hq.jpg"]});
-                break;
-        }
-
-        if (msg.includes('her')) {
-            message.reply({files: ["./images/her.jpg"]});
-        }
-        if (msg.includes('walroose')) {
-            message.reply('https://www.youtube.com/watch?v=-HSuGYt_mDo');
-        }
-        if (msg.includes('starpelly')) {
-            message.reply('who is not gay, mind you!');
-        }
-        if (msg.includes('pelly')) {
-            if (msg.includes('starpelly'))
-            {} else
-                message.reply('who is not gay, mind you!');
-        }
-        if(msg.includes(`🏳️‍🌈`))
-        {
-            message.reply('shut up fag');
-        }
-        if(msg.includes('lgbt'))
-        {
-            message.channel.send('**L**ibery\n**G**od\n**B**eer\n**T**rump');
-        }
-    })
 })
 
-client.login(config.token)
+bot.login(botsettings.token);
