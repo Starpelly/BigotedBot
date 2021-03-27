@@ -40,16 +40,14 @@ const applyText = (canvas, text, font) => {
 
 	const ctx = canvas.getContext('2d');
 
-	// Declare a base size of the font
 	let fontSize = 220;
 
 	do {
-		// Assign the font to the context and decrement it so it can be measured again
+		
 		ctx.font = `${fontSize -= 1}px ` + font;
-		// Compare pixel width of the text to the canvas minus the approximate avatar size
+		
 	} while (ctx.measureText(text).width > canvas.width - 190);
 
-	// Return the result to use in the actual canvas
 	return ctx.font;
 };
 
