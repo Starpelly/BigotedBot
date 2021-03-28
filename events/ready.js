@@ -6,6 +6,8 @@ module.exports = bot => {
     bot.user.setActivity('b!help');
 
     bot.on('message', (message) => {
+        if (message.author.bot) return;
+
         msg = message.content.toLowerCase();
     
         if (msg.includes('blm')) {
@@ -47,6 +49,10 @@ module.exports = bot => {
         if (msg.includes('rword'))
         {
             message.reply('https://www.youtube.com/watch?v=U4KcRgJfsyw');
+        }
+        if(msg.includes('lgbt'))
+        {
+            message.channel.send('**L**ibery\n**G**od\n**B**eer\n**T**rump');
         }
     })
 }

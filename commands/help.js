@@ -11,6 +11,8 @@ module.exports.run = async (bot, message, args) => {
 **b!conservativebio** - generates a random conservative bio
 **b!antitrans** - use this command to find out what it does
 **b!bansomeone** - (REQUIRES ADMIN) bans a random person in the server
+**b!xo** - plays a special song
+**you can message me Starpelly#0255 if you have a question or bug or the bot crashed or something if you want**
     `)
 }
 

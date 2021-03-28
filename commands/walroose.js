@@ -7,6 +7,7 @@ const Canvas = require('canvas');
 module.exports.run = async (bot, message, args) => {
 
     const words = args.join(' ');
+
     Canvas.registerFont("./fonts/Nanami-Rounded-Book.ttf", { family: 'Nami' });
     const canvas = Canvas.createCanvas(2046, 1152)
     const ctx = canvas.getContext('2d');
@@ -33,6 +34,10 @@ module.exports.run = async (bot, message, args) => {
 
     const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'POLITICS.png');
     
+    if (words === '')
+    {
+        message.channel.send('no arguments, sending template');
+    }
     message.channel.send(attachment);
 }
 
@@ -46,7 +51,7 @@ const applyText = (canvas, text, font) => {
 		
 		ctx.font = `${fontSize -= 1}px ` + font;
 		
-	} while (ctx.measureText(text).width > canvas.width - 190);
+	} while (ctx.measureText(text).width > canvas.width - 290);
 
 	return ctx.font;
 };
