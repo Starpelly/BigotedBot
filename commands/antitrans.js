@@ -1,7 +1,7 @@
 const Discord = require("discord.js")
 const botconfig = require("../botsettings.json");
 
-// const Canvas = require('canvas');
+const Canvas = require('canvas');
 
 module.exports.run = async (bot, message, args) => {
     Canvas.registerFont("./fonts/Nanami-Medium.ttf", { family: 'Nami' });

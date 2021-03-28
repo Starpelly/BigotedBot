@@ -1,7 +1,6 @@
 const Discord = require("discord.js")
 const botconfig = require("../botsettings.json");
-
-// const Canvas = require('canvas');
+const Canvas = require('canvas');
 
 module.exports.run = async (bot, message, args) => {
     const canvas = Canvas.createCanvas(307, 307)
