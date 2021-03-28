@@ -1,6 +1,6 @@
 random slur generator (DONE)
 command that pings a random person and says fuck you (DONE)
-make a command that bans a random person (X) <----------------
+make a command that bans a random person (DONE) <----------------
 Offensive filthy frank song lyric command (X) <-------------
 Walroose politics card generator (DONE)
 conservative bio generator (DONE)
