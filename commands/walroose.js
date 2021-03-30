@@ -16,27 +16,29 @@ module.exports.run = async (bot, message, args) => {
     const background = await Canvas.loadImage('./images/walroose.png');
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
-    // Select the style that will be used to fill the text in
-    ctx.fillStyle = 'white';
-    ctx.strokeStyle = 'black';
-    ctx.lineWidth = 20;
-    ctx.shadowOffsetX = 0;
-    ctx.shadowOffsetY = 0;
-    ctx.shadowBlur = 16;
-    ctx.shadowColor = "rgba(0, 0, 0, 0.8)";
+    ctx.fillStyle = "white";
+    function drawStrokedText(text, x, y)
+    {
+        // https://stackoverflow.com/questions/7814398/a-glow-effect-on-html5-canvas
+        ctx.save();
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 20;
+        ctx.lineJoin="round";
+        ctx.miterLimit=2;
+        ctx.strokeText(text, x, y);
+        ctx.fillText(text, x, y);
+        ctx.restore();
+    }
 
     ctx.font = applyText(canvas, words.toUpperCase(), 'Nami');
 
     ctx.textAlign = "center";
-    // Actually fill the text with a solid color
-    //ctx.strokeText(words, 200 , 147);
 
     if (words.toUpperCase() > 65)
     {
         message.channel.send('argument is longer than 65, output might look like shit')
     }
-    ctx.strokeText(words.toUpperCase(), 1023, canvas.height / 1.7);
-    ctx.fillText(words.toUpperCase(), 1023, canvas.height / 1.7);
+    drawStrokedText(words.toUpperCase(), 1023, canvas.height / 1.7);
 
     const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'POLITICS.png');
     

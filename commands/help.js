@@ -15,7 +15,8 @@ module.exports.run = async (bot, message, args) => {
         **b!xo** - plays a special song\n
         **b!r34** - generates a random rule34 image from ANY category (USE AT RISK)\n
         **b!danbooru** - generates a random danbooru image (safe images only)\n
-        **b!fucksomeone** - says fuck you to a random person in the server, essentially @someone brought back to life.`)
+        **b!fucksomeone** - says fuck you to a random person in the server, essentially @someone brought back to life.\n
+        **b!gdicon** - generates a random geometry dash icon`)
         .setFooter('you can message me Starpelly#0255 if you have a question or bug or the bot crashed or something if you want')
     return message.reply(embed);
 }
