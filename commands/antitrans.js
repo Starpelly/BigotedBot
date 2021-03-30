@@ -27,12 +27,12 @@ module.exports.run = async (bot, message, args) => {
     ctx.strokeText('SAYS FUCK TRANS RIGHTS!', 4 , 245);
     ctx.fillText('SAYS FUCK TRANS RIGHTS!', 4 , 245);
 
-    ctx.font = '60px Impact';
+    ctx.font = applyText(canvas, message.author.username.toUpperCase(), 'IMPACT');
 
     ctx.textAlign = "center";
     // Actually fill the text with a solid color
-    ctx.strokeText(message.author.username.toUpperCase(), 200 , 53);
-    ctx.fillText(message.author.username.toUpperCase(), 200 , 53);
+    ctx.strokeText(message.author.username.toUpperCase(), 200 , canvas.height / 4.7);
+    ctx.fillText(message.author.username.toUpperCase(), 200 , canvas.height / 4.7);
 
     ctx.beginPath();
     ctx.arc(125, 125, 100, 0, Math.PI * 2, true);
@@ -43,6 +43,21 @@ module.exports.run = async (bot, message, args) => {
     
     return message.channel.send(attachment);
 }
+
+const applyText = (canvas, text, font) => {
+
+	const ctx = canvas.getContext('2d');
+
+	let fontSize = 60;
+
+	do {
+		
+		ctx.font = `${fontSize -= 1}px ` + font;
+		
+	} while (ctx.measureText(text).width > canvas.width - 30);
+
+	return ctx.font;
+};
 
 module.exports.config = {
     name: "antitrans",

@@ -2,6 +2,7 @@ const Discord = require("discord.js")
 const botconfig = require("../botsettings.json");
 
 const Canvas = require('canvas');
+const drawMultilineText = require('canvas-multiline-text')
 
 
 module.exports.run = async (bot, message, args) => {
@@ -24,11 +25,16 @@ module.exports.run = async (bot, message, args) => {
     ctx.shadowBlur = 16;
     ctx.shadowColor = "rgba(0, 0, 0, 0.8)";
 
-    ctx.font = applyText(canvas, words, 'Nami');
+    ctx.font = applyText(canvas, words.toUpperCase(), 'Nami');
 
     ctx.textAlign = "center";
     // Actually fill the text with a solid color
     //ctx.strokeText(words, 200 , 147);
+
+    if (words.toUpperCase() > 65)
+    {
+        message.channel.send('argument is longer than 65, output might look like shit')
+    }
     ctx.strokeText(words.toUpperCase(), 1023, canvas.height / 1.7);
     ctx.fillText(words.toUpperCase(), 1023, canvas.height / 1.7);
 
@@ -51,7 +57,7 @@ const applyText = (canvas, text, font) => {
 		
 		ctx.font = `${fontSize -= 1}px ` + font;
 		
-	} while (ctx.measureText(text).width > canvas.width - 290);
+	} while (ctx.measureText(text).width > canvas.width);
 
 	return ctx.font;
 };

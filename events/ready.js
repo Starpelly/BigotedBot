@@ -1,4 +1,5 @@
 const Discord = require("discord.js")
+const chalk = require('chalk')
 
 module.exports = bot => { 
     console.log(`ready`)
@@ -7,6 +8,11 @@ module.exports = bot => {
 
     bot.on('message', (message) => {
         if (message.author.bot) return;
+
+        // const { guild } = message
+        // const { name, region, memberCount, } = guild
+
+        // console.log(chalk.red(name)+ ' >> ' + chalk.yellowBright(message.channel.name) + ' >> ' + chalk.greenBright(message.author.username) + ": " + message.content);
 
         msg = message.content.toLowerCase();
     
@@ -26,21 +32,17 @@ module.exports = bot => {
         if (msg.includes('walrooose')) {
             message.reply('https://www.youtube.com/watch?v=-HSuGYt_mDo');
         }
-        if (msg.includes('starpelly')) {
-            message.reply('who is not gay, mind you!');
-        }
-        if (msg.includes('pelly')) {
-            if (msg.includes('starpelly'))
-            {} else
-                message.reply('who is not gay, mind you!');
-        }
         if(msg.includes(`🏳️‍🌈`))
         {
             message.reply('shut up fag');
         }
         if (msg.includes('gay'))
         {
-            message.reply({files: ["./images/FAGGOT.mp4"]});
+            // message.reply({files: ["./images/FAGGOT.mp4"]});
+        }
+        if (msg.includes('homo'))
+        {
+            // message.reply({files: ["./images/FAGGOT.mp4"]});
         }
         if (msg.includes('rslur'))
         {
@@ -52,7 +54,81 @@ module.exports = bot => {
         }
         if(msg.includes('lgbt'))
         {
-            message.channel.send('**L**ibery\n**G**od\n**B**eer\n**T**rump');
+            message.channel.send('**L**iberty\n**G**od\n**B**eer\n**T**rump');
+        }
+        if (msg.includes('ban'))
+        {
+            // message.channel.send({files: ['./images/1984.png']});
+        }
+        if (msg.includes('suspen'))
+        {
+            message.channel.send({files: ['./images/1984.png']});
+        }
+        if (msg.includes('kys'))
+        {
+            message.channel.send('do it');
+        }
+        if (msg.includes('tranny'))
+        {
+            message.channel.send('based');
+        }
+        if (msg.includes('fag'))
+        {
+            message.channel.send('based');
+        }
+        if (msg.includes('nigger'))
+        {
+            message.channel.send('based');
+        }
+        if (msg.includes('nigga'))
+        {
+            message.channel.send('based');
+        }
+        if (msg.includes('cracker'))
+        {
+            message.channel.send('based');
+        }
+        if (msg.includes('crakka'))
+        {
+            message.channel.send('based');
+        }
+        if (msg.includes('chink'))
+        {
+            message.channel.send('based');
+        }
+        if (msg.includes('azusaw'))
+        {
+            message.channel.send('dude what the fuck');
+        }
+        if (msg.includes('meow'))
+        {
+            message.channel.send('kys');
+        }
+        if (msg.includes(':3'))
+        {
+            message.channel.send('kys');
+        }
+        if (msg.includes('asian'))
+        {
+            message.channel.send('i do not speak the arabic letters');
+        }
+        if (msg.includes('cum'))
+        {
+            message.channel.send({files: ["./images/cumcart.jpg"]});
+        }
+        if (msg.includes('dream'))
+        {
+            message.channel.send({files: ["./images/dream.png"]});
+        }
+        if (msg.includes('xd'))
+        {
+            message.channel.send('xd');
+        }
+        if (msg.includes('toshiba aimi')) {
+            message.channel.send('stop fucking microwaves.');
+        }
+        if (msg.includes('toshiba')) {
+            message.channel.send('stop fucking microwaves.');
         }
     })
 }

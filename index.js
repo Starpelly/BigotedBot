@@ -7,9 +7,6 @@ require("./util/eventHandler")(bot);
 
 const fs = require("fs");
 
-const DisTube = require('distube');
-bot.distube = new DisTube(bot, { searchSongs: false, emitNewSongOnly: true });
-
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
 

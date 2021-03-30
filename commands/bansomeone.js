@@ -11,16 +11,20 @@ module.exports.run = async (bot, message, args) => {
             const target = user
             const targetMember = message.guild.members.cache.get(target.id);
 
-            console.log(targetMember.bannable);
+            // console.log(targetMember);
 
-            if (targetMember.bannable == true) {
-                targetMember.ban();
-                return message.reply(`${targetMember} has been randomly banned`);
+            if (targetMember.id == 366303675792097291) {
+                return message.reply(`i cannot ban god`);
             } else {
-                if (targetMember == message.guild.me) {
-                    return message.reply('i cant ban myself');
+                if (targetMember.bannable == true) {
+                    targetMember.ban();
+                    return message.reply(`${targetMember} has been randomly banned`);
                 } else {
-                    return message.reply(`cant ban this guy ${targetMember}`);
+                    if (targetMember == message.guild.me) {
+                        return message.reply('i cant ban myself');
+                    } else {
+                        return message.reply(`cant ban this guy ${targetMember}`);
+                    }
                 }
             }
         } else {
