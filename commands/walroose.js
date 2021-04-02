@@ -47,6 +47,7 @@ module.exports.run = async (bot, message, args) => {
         message.channel.send('no arguments, sending template');
     }
     message.channel.send(attachment);
+    console.log(words)
 }
 
 const applyText = (canvas, text, font) => {

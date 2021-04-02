@@ -23,7 +23,8 @@
     "node-pre-gyp": "^0.17.0",
     "opusscript": "0.0.8",
     "r34api.js": "^1.1.5",
-    "superagent": "^6.1.0"
+    "superagent": "^6.1.0",
+    "ytdl-core": "^4.5.0"
   },
   "engines": {
     "node": "14.15.4"
