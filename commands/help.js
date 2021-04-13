@@ -17,7 +17,8 @@ module.exports.run = async (bot, message, args) => {
         **b!danbooru** - generates a random danbooru image (safe images only)\n
         **b!fucksomeone** - says fuck you to a random person in the server, essentially @someone brought back to life.\n
         **b!gdicon** - generates a random geometry dash icon\n
-        **b!orange** - generates a random cat image`)
+        **b!orange** - generates a random cat image\n
+        **b!invite** - sends an invite link for the bot`)
         .setFooter('you can message me Starpelly#0255 if you have a question or bug or the bot crashed or something if you want')
     return message.reply(embed);
 }

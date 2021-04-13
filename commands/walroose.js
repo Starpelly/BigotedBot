@@ -33,11 +33,6 @@ module.exports.run = async (bot, message, args) => {
     ctx.font = applyText(canvas, words.toUpperCase(), 'Nami');
 
     ctx.textAlign = "center";
-
-    if (words.toUpperCase() > 65)
-    {
-        message.channel.send('argument is longer than 65, output might look like shit')
-    }
     drawStrokedText(words.toUpperCase(), 1023, canvas.height / 1.7);
 
     const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'POLITICS.png');
