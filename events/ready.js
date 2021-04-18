@@ -26,29 +26,34 @@ module.exports = bot => {
         if (mute == true) return;
         console.log(mute);*/
         if (message.author.bot) return;
-         // const { guild } = message
-         // const { name, region, memberCount, } = guild
+         const { guild } = message
+         const { name, region, memberCount, } = guild
 
          // console.log(chalk.red(name)+ ' >> ' + chalk.yellowBright(message.channel.name) + ' >> ' + chalk.greenBright(message.author.username) + ": " + message.content);
 
          
+        if (message.member.id == "535480509455925258")
+        {
+            message.react('😂');
+        }
+
         if (msg.includes('michigun'))
         {
             // message.channel.send('∆∆∆');
         }
     
         if (msg.includes('blm')) {
-            message.reply('paper beats rock', {files: ["https://pm1.narvii.com/6687/838332442a6553467f57b045da3d2e9cfccb4c75_hq.jpg"]});
+            message.reply({files: ["./images/literally me.mp4"]});
         }
         if (msg.includes('blacklivesmatter')) {
-            message.reply('paper beats rock', {files: ["https://pm1.narvii.com/6687/838332442a6553467f57b045da3d2e9cfccb4c75_hq.jpg"]});
+            message.reply({files: ["./images/literally me.mp4"]});
         }
         if (msg.includes('black lives')) {
-              message.reply('paper beats rock', {files: ["https://pm1.narvii.com/6687/838332442a6553467f57b045da3d2e9cfccb4c75_hq.jpg"]});
+            message.reply({files: ["./images/literally me.mp4"]});
         }
     
         if (msg.includes('trans')) {
-              message.reply({files: ["./images/based.png"]});
+              //message.reply({files: ["./images/based.png"]});
         }
         if (msg.includes('walrooose')) {
               message.reply('https://www.youtube.com/watch?v=-HSuGYt_mDo');
@@ -60,11 +65,11 @@ module.exports = bot => {
         if (msg.includes('gay'))
         {
               if (message.member.id == '366303675792097291') return;
-              message.reply({files: ["./images/FAGGOT.mp4"]});
+              //message.reply({files: ["./images/FAGGOT.mp4"]});
         }
         if (msg.includes('homo'))
         {
-              message.reply({files: ["./images/FAGGOT.mp4"]});
+              //message.reply({files: ["./images/FAGGOT.mp4"]});
         }
         if (msg.includes('rslur'))
         {
@@ -80,11 +85,11 @@ module.exports = bot => {
         }
         if (msg.includes('ban'))
         {
-              message.channel.send({files: ['./images/1984.png']});
+              //message.channel.send({files: ['./images/1984.png']});
         }
         if (msg.includes('suspen'))
         {
-              message.channel.send({files: ['./images/1984.png']});
+             // message.channel.send({files: ['./images/1984.png']});
         }
         if (msg.includes('kys'))
         {
@@ -140,7 +145,7 @@ module.exports = bot => {
         }
         if (msg.includes('cum'))
         {
-              message.channel.send({files: ["./images/cumcart.jpg"]});
+              //message.channel.send({files: ["./images/cumcart.jpg"]});
         }
         if (msg.includes('dream'))
         {
@@ -157,7 +162,7 @@ module.exports = bot => {
               message.channel.send('stop fucking microwaves.');
         }
         if (msg.includes('husband')) {
-              message.channel.send({files: ['./images/1984.png']});
+              //message.channel.send({files: ['./images/1984.png']});
         }
         if (msg.includes('crazen')) {
               message.channel.send('https://www.youtube.com/watch?v=izoxbpt-pRM');
@@ -173,10 +178,10 @@ module.exports = bot => {
               message.channel.send('https://en.m.wikipedia.org/wiki/List_of_ethnic_slurs');
         }
         if (msg.includes('black')) {
-              message.channel.send({files: ['./images/POLITICS-10.jpg']});
+              //message.channel.send({files: ['./images/POLITICS-10.jpg']});
         }
         if (msg.includes('white')) {
-              message.channel.send({files: ['./images/POLITICS-20.png']});
+              //message.channel.send({files: ['./images/POLITICS-20.png']});
         }
         if (msg.includes('frank ocean')) {
             message.react('😂')
