@@ -29,9 +29,6 @@ module.exports = bot => {
          const { guild } = message
          const { name, region, memberCount, } = guild
 
-         // console.log(chalk.red(name)+ ' >> ' + chalk.yellowBright(message.channel.name) + ' >> ' + chalk.greenBright(message.author.username) + ": " + message.content);
-
-         
         if (message.member.id == "535480509455925258")
         {
             message.react('😂');
