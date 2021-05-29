@@ -4,7 +4,7 @@ const path = require('path')
 
 module.exports.run = async (bot, message, args) => {
 
-    try {
+    /*try {
         const music = args.join(' ');
         const { voice } = message.member;
     
@@ -24,7 +24,7 @@ module.exports.run = async (bot, message, args) => {
                 .setTitle('ERROR HANDLER')
                 .setDescription(`something happened, message this error to Starpelly. **"${error}"**`)
         return message.channel.send(embed);
-    }
+    }*/
 }
 
 module.exports.config = {

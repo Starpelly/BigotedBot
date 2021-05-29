@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, args) => {
 
     Canvas.registerFont("./fonts/Roboto-Medium.ttf", { family: 'Nami' });
 
-    ctx.font = '30px Nami';
+    ctx.font = '30px Roboto';
 	// Select the style that will be used to fill the text in
 	ctx.fillStyle = '#ffffff';
 	// Actually fill the text with a solid color
