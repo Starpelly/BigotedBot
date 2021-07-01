@@ -10,8 +10,8 @@ module.exports.run = async (bot, message, args) => {
     }
 
     const multiply = 4;
-    var player1health = 48;
-    var player2health = 28;
+    var player1health = 48
+    var player2health = 48
 
     const canvas = Canvas.createCanvas(240*multiply, 160*multiply)
     const ctx = canvas.getContext('2d');

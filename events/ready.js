@@ -7,6 +7,11 @@ var mutedTimes = 0;
 
 module.exports = bot => { 
 
+      var server = bot.guilds.cache.get("786356889155665930");
+      var channel = server.channels.cache.get("810343901609197598");
+
+      // setInterval(function(){ channel.send("<@293545182744412162> wassup"); }, 5000)
+
     console.log(`ready`)
     // bot.user.setActivity('ur mom lol', {type: 'COMPETING'});
     bot.user.setActivity('b!help');
@@ -25,13 +30,14 @@ module.exports = bot => {
         }
         if (mute == true) return;
         console.log(mute);*/
-        if (message.author.bot) return;
+        
+        /*if (message.author.bot) return;
          const { guild } = message
          const { name, region, memberCount, } = guild
 
         if (message.member.id == "535480509455925258")
         {
-            message.react('😂');
+            message.react('🌫️');
         }
 
         if (msg.includes('michigun'))
@@ -181,7 +187,7 @@ module.exports = bot => {
               //message.channel.send({files: ['./images/POLITICS-20.png']});
         }
         if (msg.includes('frank ocean')) {
-            message.react('😂')
+            message.react('🌫️')
               message.channel.send({files: ['./images/trollface.png']});
             //message.channel.send(emoji('692557626378289232'));
         }
@@ -196,6 +202,6 @@ module.exports = bot => {
         if (msg.includes('kumato'))
         {
               message.reply('i love you faggot uwu');
-        }
+        }*/
     })
 }
