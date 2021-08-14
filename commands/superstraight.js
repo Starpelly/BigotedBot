@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, args) => {
 
     const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'superstraight-pride.png');
     
-    return message.channel.send(attachment);
+    return message.lineReply(attachment);
 }
 
 module.exports.config = {

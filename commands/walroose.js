@@ -41,9 +41,9 @@ module.exports.run = async (bot, message, args) => {
     
     if (words === '')
     {
-        message.channel.send('no arguments, sending template');
+        message.lineReply('no arguments, sending template');
     }
-    message.channel.send(attachment);
+    message.lineReply(attachment);
     console.log(words)
 }
 

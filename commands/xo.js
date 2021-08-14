@@ -4,7 +4,7 @@ const path = require('path')
 
 module.exports.run = async (bot, message, args) => {
 
-    /*try {
+    try {
         const music = args.join(' ');
         const { voice } = message.member;
     
@@ -23,8 +23,8 @@ module.exports.run = async (bot, message, args) => {
         embed = new Discord.MessageEmbed()
                 .setTitle('ERROR HANDLER')
                 .setDescription(`something happened, message this error to Starpelly. **"${error}"**`)
-        return message.channel.send(embed);
-    }*/
+        return message.lineReply(embed);
+    }
 }
 
 module.exports.config = {

@@ -36,7 +36,7 @@ module.exports.run = async (bot, message, args) => {
 
     if (words.toUpperCase() > 65)
     {
-        message.channel.send('argument is longer than 65, output might look like shit')
+        message.lineReply('argument is longer than 65, output might look like shit')
     }
     drawStrokedText(words.toUpperCase(), 1023, canvas.height / 1.7);
 
@@ -44,9 +44,9 @@ module.exports.run = async (bot, message, args) => {
     
     if (words === '')
     {
-        message.channel.send('no arguments, sending template');
+        message.lineReply('no arguments, sending template');
     }
-    message.channel.send(attachment);
+    message.lineReply(attachment);
     console.log(words)
 }
 

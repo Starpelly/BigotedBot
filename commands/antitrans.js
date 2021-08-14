@@ -41,7 +41,7 @@ module.exports.run = async (bot, message, args) => {
 
     const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'anti-trans-pride.png');
     
-    return message.channel.send(attachment);
+    return message.lineReply(attachment);
 }
 
 const applyText = (canvas, text, font) => {

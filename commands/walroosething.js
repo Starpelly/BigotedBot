@@ -39,7 +39,7 @@ module.exports.run = async (bot, message, args) => {
 
     const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'cleansing.png');
 
-    message.channel.send(attachment);
+    message.lineReply(attachment);
 }
 
 function getRandomInt(max) {

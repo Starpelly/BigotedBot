@@ -4,7 +4,7 @@ const botconfig = require("../botsettings.json");
 module.exports.run = async (bot, message, args) => {
     embed = new Discord.MessageEmbed()
         .setTitle(`Help command`)
-        .setDescription(`**b!play** - plays a random sound effect\n
+        .setDescription(`
         **b!walroose** - generates a walroose card thing\n
         **b!superstaight** - makes a superstraight pride pfp\n
         **b!slur** - generates a random slur\n
@@ -18,9 +18,22 @@ module.exports.run = async (bot, message, args) => {
         **b!fucksomeone** - says fuck you to a random person in the server, essentially @someone brought back to life.\n
         **b!gdicon** - generates a random geometry dash icon\n
         **b!orange** - generates a random cat image\n
-        **b!invite** - sends an invite link for the bot`)
+        **b!invite** - sends an invite link for the bot\n
+        **b!stonetoss** - amogus\n
+        **b!reddit** - gets a random post from a random subreddit\n
+        **b!blacky** - funny thumbnails\n
+        **b!wiiu** - better than switch\n
+        **b!play** - play a random sound effect\n
+        **b!hummer** - DUDE THIS CAR KICKS ASS, AND I CAN WATCH MADAGASCAR WHILE I'M DRIVING!\n
+        **b!kanye** - generates a random kanye west quote\n
+        **b!kym** - gets 10 random images from a know your meme search\n
+        **b!morse** - generates morse code based on arguments passed\n
+        **b!trump** - generates a random trump tweet maybe\n
+        **b!fact** - random fact fucking useless kys\n
+        **b!joke** - adds or gets the global joke list, PARAMS: (list: displays all the jokes from a max of 50, random: gets a random joke). **THIS ONLY WORKS WHEN REPLYING TO MESSAGES**
+        `)
         .setFooter('you can message me Starpelly#0255 if you have a question or bug or the bot crashed or something if you want')
-    return message.reply(embed);
+    return message.lineReply(embed);
 }
 
 module.exports.config = {

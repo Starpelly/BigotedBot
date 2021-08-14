@@ -4,7 +4,7 @@ const fs = require('fs');
 const ytdl = require('ytdl-core');
 
 module.exports.run = async (bot, message, args) => {
-    return message.channel.send({files: ['./images/fish.gif']});
+    return message.lineReply({files: ['./images/fish.gif']});
 }
 
 module.exports.config = {

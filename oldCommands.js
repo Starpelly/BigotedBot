@@ -63,7 +63,7 @@ command(client, 'antitrans', async (message) => {
 
     const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'anti-trans-pride.png');
     
-    message.channel.send(attachment);
+    message.lineReply(attachment);
 })
 
 command(client, 'walroose', async (message) => {
@@ -87,7 +87,7 @@ command(client, 'walroose', async (message) => {
 
     const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'anti-trans-pride.png');
     
-    message.channel.send(attachment);
+    message.lineReply(attachment);
 })
 
 command(client, 'superstraight', async (message) => {
@@ -102,7 +102,7 @@ command(client, 'superstraight', async (message) => {
 
     const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'superstraight-pride.png');
     
-    message.channel.send(attachment);
+    message.lineReply(attachment);
 })
 
 command(client, 'slur', (message) => {
@@ -152,6 +152,6 @@ client.on('message', (message) => {
     }
     if(msg.includes('lgbt'))
     {
-        message.channel.send('**L**ibery\n**G**od\n**B**eer\n**T**rump');
+        message.lineReply('**L**ibery\n**G**od\n**B**eer\n**T**rump');
     }
 })

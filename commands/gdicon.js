@@ -3,7 +3,7 @@ const botconfig = require("../botsettings.json");
 
 module.exports.run = async (bot, message, args) => {
     try {
-        const msg = await message.channel.send('Generating...');
+        const msg = await message.lineReply('Generating...');
 
         var form = ['cube', 'ship', 'ball', 'ufo', 'wave', 'robot', 'spider']
         var randomForm = Math.floor(Math.random() * form.length);
@@ -44,7 +44,7 @@ module.exports.run = async (bot, message, args) => {
             .setTitle(`Random GD Icon`)
             .setImage(randomIcon)
             .setFooter(`form: ${form[randomForm]}\ncolor1: ${colors1}\ncolor2: ${colors2}`)
-        message.channel.send(embed);
+        message.lineReply(embed);
         return msg.delete();
     } catch (error) {
         console.log(error);

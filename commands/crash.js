@@ -2,7 +2,7 @@ const Discord = require("discord.js")
 const botconfig = require("../botsettings.json");
 
 module.exports.run = async (bot, message, args) => {
-    return message.channel.send({ files: ['./images/fnaf_leak.mp4']})
+    return message.lineReply({ files: ['./images/fnaf_leak.mp4']})
 }
 
 module.exports.config = {

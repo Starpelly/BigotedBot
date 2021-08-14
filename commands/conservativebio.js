@@ -15,7 +15,7 @@ module.exports.run = async (bot, message, args) => {
     const randomRS = Math.floor(Math.random() * hastag.length);
 
 
-    return message.channel.send(ideology[randomId] + ' ' + christian[randomCH] + ' ' + hastag[randomHT] + '. ' + relationship[randomRS]);
+    return message.lineReply(ideology[randomId] + ' ' + christian[randomCH] + ' ' + hastag[randomHT] + '. ' + relationship[randomRS]);
 }
 
 module.exports.config = {

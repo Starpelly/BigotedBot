@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, args) => {
         embed = new Discord.MessageEmbed()
             .setTitle(`Random Github Icon`)
             .setImage(randomIcon)
-        message.channel.send(embed);
+        message.lineReply(embed);
     } catch (error) {
         console.log(error);
     }

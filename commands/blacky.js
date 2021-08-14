@@ -19,24 +19,45 @@ module.exports.run = async (bot, message, args) => {
     const background = await Canvas.loadImage('./images/blacky.png');
     ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
     
-    let messageAttachment = message.attachments.size > 0 ? message.attachments.array()[0].url : null
-    try {
-        if (messageAttachment != null)
-        {
-            const foreground = await Canvas.loadImage(messageAttachment);
-            ctx.shadowColor = "#000";
-            ctx.shadowOffsetX = 3;
-            ctx.shadowOffsetY = 3;
-            ctx.shadowBlur = 15;
-            ctx.drawImage(foreground, 480, 0, 776, canvas.height);
-        }
-        else
-        {
-            message.channel.send('no image, sending blank bg')
-        }
+    let messageAttachment;
+
+    if (message.reference)
+    {
+        var refMessage = message.reference;
+        let refer = message.channel.messages.fetch(refMessage.messageID);
+        
+        let result = await refer;
+        
+        messageAttachment = result.attachments.size > 0 ? result.attachments.array()[0].url : null
+        
+        const foreground = await Canvas.loadImage(messageAttachment);
+        ctx.shadowColor = "#000";
+        ctx.shadowOffsetX = 3;
+        ctx.shadowOffsetY = 3;
+        ctx.shadowBlur = 15;
+        ctx.drawImage(foreground, 480, 0, 776, canvas.height);
     }
-    catch (error) {
-        console.log(error)
+    else
+    {
+        let messageAttachment = message.attachments.size > 0 ? message.attachments.array()[0].url : null
+        try {
+            if (messageAttachment != null)
+            {
+                const foreground = await Canvas.loadImage(messageAttachment);
+                ctx.shadowColor = "#000";
+                ctx.shadowOffsetX = 3;
+                ctx.shadowOffsetY = 3;
+                ctx.shadowBlur = 15;
+                ctx.drawImage(foreground, 480, 0, 776, canvas.height);
+            }
+            else
+            {
+                message.lineReply('no image, sending blank bg')
+            }
+        }
+        catch (error) {
+            console.log(error)
+        }
     }
 
 
@@ -61,7 +82,7 @@ module.exports.run = async (bot, message, args) => {
             var gradient = ctx.createLinearGradient(0, 0, 0, canvas.height * 1.4);
             gradient.addColorStop(0, "#ff666b");
             gradient.addColorStop(0.7, "#a80506");
-    
+     
             ctx.fillStyle = gradient;
         }
         if (blue)
@@ -104,9 +125,9 @@ module.exports.run = async (bot, message, args) => {
     
     if (words === '')
     {
-        message.channel.send('no arguments, sending template');
+        message.lineReply('no arguments, sending template');
     }
-    message.channel.send(attachment);
+    message.lineReply(attachment);
     console.log(words)
 }
 

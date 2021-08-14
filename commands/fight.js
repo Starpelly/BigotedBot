@@ -6,7 +6,7 @@ module.exports.run = async (bot, message, args) => {
     const user = message.mentions.users.first();
 
     if (user === undefined) {
-        return message.channel.send('please choose who you want to fight and run the command again');
+        return message.lineReply('please choose who you want to fight and run the command again');
     }
 
     const multiply = 4;

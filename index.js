@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const botsettings = require('./botsettings.json');
-
+require('discord-reply');
 const bot = new Discord.Client({disableEveryone: true});
 
 require("./util/eventHandler")(bot);
@@ -42,4 +42,4 @@ bot.on("message", async message => {
 
 })
 
-bot.login(process.env.token);
+bot.login(botsettings.token);

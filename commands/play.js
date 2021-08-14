@@ -11,20 +11,23 @@ module.exports.run = async (bot, message, args) => {
             message.reply('youre not in a voice channel faggot');
             return;
         }
-
         
         voice.channel.join().then((connection) => {
-            const slurs = ['nigger', 'virus', 'tacobell', 'mutahar', 'vine', 'bopbopnigga', 'amogus', 'NIGGERS'];
+            const slurs = ['nigger.mp3', 'virus.mp3', 'mutahar.mp3', 'vine.mp3', 'bopbopnigga.mp3', 'amogus.mp3', 'NIGGERS.mp3', 'Big Rock Finish H.mp3',
+            'trol.mp3', 'liveblackreaction.mp3'];
             const random = Math.floor(Math.random() * slurs.length);
-            const dispatcher = connection.play(path.join('./sfx/' + slurs[random] + '.mp3'));
+            const dispatcher = connection.play(path.join('./sfx/' + slurs[random]));
             dispatcher.on("finish", end => {
                 // console.log('yep')
                 return voice.channel.leave();
             });
         });
-        // message.channel.send('ayo this shit break too much ill fix it in the morning.');
-    } catch {
-
+        // message.lineReply('ayo this shit break too much ill fix it in the morning.');
+    } catch (error) {
+        embed = new Discord.MessageEmbed()
+                .setTitle('ERROR HANDLER')
+                .setDescription(`something happened, message this error to Starpelly. **"${error}"**`)
+        return message.lineReply(embed);
     }
 }
 

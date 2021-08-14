@@ -4,22 +4,22 @@ const superagent = require('superagent');
 
 module.exports.run = async (bot, message, args) => {
     try {
-        const msg = await message.channel.send('Generating...');
+        const msg = await message.lineReply('Generating...');
 
         let { body } = await superagent.get('http://aws.random.cat/meow')
-        if(!{ body }) return message.channel.send('fucked something up.')
+        if(!{ body }) return message.lineReply('fucked something up.')
     
         const catEmbed = new Discord.MessageEmbed()
             .setTitle('Random Cat')
             .setImage(body.file)
     
         msg.delete();
-        return message.channel.send(catEmbed);
+        return message.lineReply(catEmbed);
     } catch (error) {
         embed = new Discord.MessageEmbed()
                     .setTitle('ERROR HANDLER')
                     .setDescription(`something happened, message this error to Starpelly. **"${error}"**`)
-        return message.channel.send(embed);
+        return message.lineReply(embed);
     }
 }
 

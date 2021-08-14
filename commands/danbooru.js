@@ -13,13 +13,13 @@ module.exports.run = async (bot, message, args) => {
                 .setTitle(`Random danbooru image`)
                 .setImage(post.fileUrl)
     
-            return message.channel.send(embed);
+            return message.lineReply(embed);
         })
     } catch (error) {
         embed = new Discord.MessageEmbed()
                 .setTitle('ERROR HANDLER')
                 .setDescription(`something happened, message this error to Starpelly. **"${error}"**`)
-        return message.channel.send(embed);
+        return message.lineReply(embed);
     }
 
 }
