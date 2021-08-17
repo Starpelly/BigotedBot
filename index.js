@@ -26,6 +26,8 @@ const jokesRouter = require('./routes/jokes');
 app.use('/jokes', jokesRouter);
 app.set('json spaces', 2)
 
+app.get('/', (req, res) => res.send("bigoted bot api bullshit"))
+
 fs.readdir("./commands/", (err, files) => {
 
     if(err) console.log(err)
