@@ -4,7 +4,7 @@ const Canvas = require('canvas');
 const fs = require('fs');
 const paginationEmbed = require('discord.js-pagination');
 
-let url = "http://localhost:3000/jokes/";
+let url =  `${process.env.URL}/jokes/` || "http://localhost:3000/jokes/";
 let settings = { method: "Get"};
 
 module.exports.run = async (bot, message, args) => {
