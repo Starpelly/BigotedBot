@@ -10,6 +10,22 @@ const fs = require("fs");
 bot.commands = new Discord.Collection();
 bot.aliases = new Discord.Collection();
 
+require('dotenv').config()
+const express = require('express');
+const app = express();
+const mongoose = require('mongoose');
+
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
+const db = mongoose.connection;
+db.on('error', (error) => console.error(error));
+db.on('open', () => console.log('connected to database'));
+
+app.use(express.json());
+
+const jokesRouter = require('./routes/jokes');
+app.use('/jokes', jokesRouter);
+app.set('json spaces', 2)
+
 fs.readdir("./commands/", (err, files) => {
 
     if(err) console.log(err)
@@ -42,4 +58,5 @@ bot.on("message", async message => {
 
 })
 
-bot.login(process.env.token);
+bot.login(process.env.token || botsettings.token);
+app.listen(process.env.PORT || 3000, () => console.log("server started"));
