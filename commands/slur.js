@@ -1,4 +1,4 @@
-let url =  "http://localhost:3000/slurs/random";
+let url =  `${process.env.URL}/slurs/random/` || "http://localhost:3000/slurs/random";
 let settings = { method: "Get"};
 
 module.exports.run = async (bot, message, args) => {
