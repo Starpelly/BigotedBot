@@ -13,12 +13,14 @@ bot.aliases = new Discord.Collection();
 require('dotenv').config()
 const express = require('express');
 const app = express();
+const path = require('path');
 const mongoose = require('mongoose');
 
 mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', (error) => console.error(error));
 db.on('open', () => console.log('connected to database'));
+
 
 app.use(express.json());
 
@@ -28,7 +30,9 @@ app.use('/jokes', jokesRouter);
 const slursRouter = require('./routes/slurs');
 app.use('/slurs', slursRouter);
 
-app.get('/', (req, res) => res.send("bigoted bot api bullshit"))
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname+"/api/index.html"));
+});
 
 fs.readdir("./commands/", (err, files) => {
     
