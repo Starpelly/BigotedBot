@@ -24,19 +24,21 @@ app.use(express.json());
 
 const jokesRouter = require('./routes/jokes');
 app.use('/jokes', jokesRouter);
-app.set('json spaces', 2)
+
+const slursRouter = require('./routes/slurs');
+app.use('/slurs', slursRouter);
 
 app.get('/', (req, res) => res.send("bigoted bot api bullshit"))
 
 fs.readdir("./commands/", (err, files) => {
-
+    
     if(err) console.log(err)
-
+    
     let jsfile = files.filter(f => f.split(".").pop() === "js") 
     if(jsfile.length <= 0) {
-         return console.log("[LOGS] Couldn't Find Commands!");
+        return console.log("[LOGS] Couldn't Find Commands!");
     }
-
+    
     jsfile.forEach((f, i) => {
         let pull = require(`./commands/${f}`);
         bot.commands.set(pull.config.name, pull);  
@@ -48,17 +50,18 @@ fs.readdir("./commands/", (err, files) => {
 
 bot.on("message", async message => {
     if(message.author.bot || message.channel.type === "dm") return;
-
+    
     let prefix = botsettings.prefix;
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
     let args = messageArray.slice(1);
-
+    
     if(!message.content.startsWith(prefix)) return;
     let commandfile = bot.commands.get(cmd.slice(prefix.length)) || bot.commands.get(bot.aliases.get(cmd.slice(prefix.length)))
     if(commandfile) commandfile.run(bot,message,args)
-
+    
 })
 
+app.set('json spaces', 2)
 bot.login(process.env.token || botsettings.token);
 app.listen(process.env.PORT || 3000, () => console.log("server started"));

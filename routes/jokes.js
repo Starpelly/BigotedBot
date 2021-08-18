@@ -17,6 +17,20 @@ router.get('/:id', getJoke, (req, res) => {
     res.send(res.joke);
 })
 
+// Random
+router.get('/random', async (req, res) => {
+    try {
+        const jokes = await Joke.find();
+        res.json(jokes);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+})
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
+
 // Creating one
 router.post('/', async (req, res) => {
     if (req.body.password == "sugmacock") {
