@@ -15,6 +15,7 @@
     "assert": "^2.0.0",
     "axios": "^0.21.1",
     "booru": "^2.4.0",
+    "canvas-filters": "^1.0.1",
     "canvas-multiline-text": "^1.0.3",
     "chalk": "^4.1.0",
     "compile-run": "^2.3.4",
@@ -42,7 +43,6 @@
     "saucenao": "0.0.2",
     "scraperjs": "^1.2.0",
     "shitty-memes": "^1.4.0",
-    "stackblur-canvas": "^2.5.0",
     "superagent": "^6.1.0",
     "ytdl-core": "^4.5.0"
   }
