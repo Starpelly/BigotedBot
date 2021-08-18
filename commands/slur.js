@@ -1,14 +1,12 @@
-let url =  `${process.env.URL}/slurs/` || "http://localhost:3000/slurs/";
+let url =  "http://localhost:3000/slurs/random";
 let settings = { method: "Get"};
 
 module.exports.run = async (bot, message, args) => {
     try {
-        let res_;
         fetch(url, settings)
         .then(res => res.json())
         .then((json) => {
-            const random = Math.floor(Math.random() * json.length);
-            return message.lineReply(json[random].slur);
+            return message.lineReply(json.slur);
         });
 
     } catch (error) {

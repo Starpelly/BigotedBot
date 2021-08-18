@@ -5,31 +5,28 @@ const Joke = require('../models/joke');
 // Getting all
 router.get('/', async (req, res) => {
     try {
-        const jokes = await Joke.find();
+        const jokes = await Joke.find({}, {_id:0, __v:0});
         res.json(jokes);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
-})
-
-// Getting one
-router.get('/:id', getJoke, (req, res) => {
-    res.send(res.joke);
-})
+});
 
 // Random
 router.get('/random', async (req, res) => {
     try {
-        const jokes = await Joke.find();
-        res.json(jokes);
+        const jokes = await Joke.find({}, {_id:0, __v:0});
+        const random = Math.floor(Math.random() * jokes.length);
+        res.json(jokes[random]);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
-})
+});
 
-function getRandomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
-}
+// Getting one
+router.get('/:id', getJoke, (req, res) => {
+    res.send(res.joke);
+});
 
 // Creating one
 router.post('/', async (req, res) => {
@@ -53,7 +50,7 @@ router.post('/', async (req, res) => {
         res.status(403).json({ message: "Password incorrect" });
 
     }
-})
+});
 
 async function getJoke(req, res, next) {
     let joke;
