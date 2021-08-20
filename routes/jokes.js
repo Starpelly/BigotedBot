@@ -24,9 +24,14 @@ router.get('/random', async (req, res) => {
 });
 
 // Getting one
-router.get('/:id', getJoke, (req, res) => {
+router.get('/:userID', getJokeByUserID, (req, res) => {
     res.send(res.joke);
 });
+
+// Getting one
+/*router.get('/:id', getJoke, (req, res) => {
+    res.send(res.joke);
+});*/
 
 // Creating one
 router.post('/', async (req, res) => {
@@ -35,7 +40,8 @@ router.post('/', async (req, res) => {
             message: req.body.message,
             pfp: req.body.pfp,
             username: req.body.username,
-            media: req.body.media
+            media: req.body.media,
+            userID: req.body.userID
         });
     
         try {
@@ -58,6 +64,22 @@ async function getJoke(req, res, next) {
         joke = await Joke.findById(req.params.id);
         if (joke == null) {
             return res.status(404).json({ message: 'Cannot find joke' });
+        }
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+
+    res.joke = joke;
+    next();
+}
+
+
+async function getJokeByUserID(req, res, next) {
+    let joke;
+    try {
+        joke = await Joke.find({ userID: req.params.userID });
+        if (joke == null) {
+            return res.status(404).json({ message: 'This user has no jokes in list!' });
         }
     } catch (error) {
         return res.status(500).json({ message: error.message });

@@ -16,6 +16,10 @@ const jokeSchema = new mongoose.Schema({
     media: {
         type: String,
         required: false
+    },
+    userID: {
+        type: Number,
+        required: true
     }
 })
 
