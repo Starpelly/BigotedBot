@@ -45,6 +45,7 @@ module.exports.run = async (bot, message, args) => {
     **b!joke** - adds or gets the global joke list, PARAMS: (list: displays all the jokes from a max of 50, random: gets a random joke). **THIS ONLY WORKS WHEN REPLYING TO MESSAGES**\n
     **b!pablo** - THE PABLO!!!!!!!!\n
     **b!twelve** - generates a SHES 12??!!! thumbnail
+    **b!cuban** - idk what this is someone asked me to make this
     `)
     .setFooter('you can message me Starpelly#0255 if you have a question or bug or the bot crashed or something if you want');
     pages.push(page2);

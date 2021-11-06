@@ -35,7 +35,7 @@
     "node-canvas-with-twemoji-and-discord-emoji": "^1.2.1",
     "node-fetch": "^2.6.1",
     "node-pre-gyp": "^0.17.0",
-    "nodemon": "^2.0.7",
+    "nodemon": "^2.0.14",
     "opusscript": "0.0.8",
     "path": "^0.12.7",
     "pixl-canvas-plus": "^2.0.11",
