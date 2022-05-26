@@ -5,14 +5,6 @@ const jokeSchema = new mongoose.Schema({
         type: String,
         required: false
     },
-    pfp: {
-        type: String,
-        required: true
-    },
-    username: {
-        type: String,
-        required: true
-    },
     media: {
         type: String,
         required: false

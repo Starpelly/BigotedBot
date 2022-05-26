@@ -35,11 +35,9 @@ router.get('/:userID', getJokeByUserID, (req, res) => {
 
 // Creating one
 router.post('/', async (req, res) => {
-    if (req.body.password == "sugmacock") {
+    if (req.body.password == "niggafag123") {
         const joke = new Joke({
             message: req.body.message,
-            pfp: req.body.pfp,
-            username: req.body.username,
             media: req.body.media,
             userID: req.body.userID
         });

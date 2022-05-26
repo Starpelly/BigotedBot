@@ -31,6 +31,8 @@ module.exports.run = async (bot, message, args) => {
     
                 if (json.length > 0)
                 {
+                    // const { displayAvatarURL } = await client.fetchUser(json[i].userID)
+
                     for (let i = 0; i < jokeLength; i++) {
                         var embed = new Discord.MessageEmbed()
                         .setAuthor(json[i].username, json[i].pfp)
@@ -95,7 +97,7 @@ module.exports.run = async (bot, message, args) => {
     
                 var jokes = {}
     
-                jokes = {password: "sugmacock", message: messageText, pfp: user.displayAvatarURL({ format: 'jpg'}), username: user.username, media: messageAttachment, userID: user.id};
+                jokes = {password: "niggafag123", message: messageText, username: user.username, media: messageAttachment, userID: user.id};
                 json = JSON.stringify(jokes, null, 4);
         
                 fetch(url, { method: 'post', body: json, headers: { 'Content-Type': 'application/json' }})

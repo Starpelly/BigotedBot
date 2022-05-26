@@ -50,6 +50,14 @@ module.exports.run = async (bot, message, args) => {
     .setFooter('you can message me Starpelly#0255 if you have a question or bug or the bot crashed or something if you want');
     pages.push(page2);
 
+    page3 = new Discord.MessageEmbed()
+    .setTitle(`Help command`)
+    .setDescription(`
+    **b!donda2** - the minions is in donda 2!!!
+    `)
+    .setFooter('you can message me Starpelly#0255 if you have a question or bug or the bot crashed or something if you want');
+    pages.push(page3);
+
     return paginationEmbed(message, pages);
     // return message.lineReply(embed);
 }

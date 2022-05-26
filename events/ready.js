@@ -7,10 +7,10 @@ var mutedTimes = 0;
 
 module.exports = bot => { 
 
-      var server = bot.guilds.cache.get("786356889155665930");
-      var channel = server.channels.cache.get("810343901609197598");
+    //var server = bot.guilds.cache.get("786356889155665930");
+    // var channel = server.channels.cache.get("810343901609197598");
 
-      // setInterval(function(){ channel.send("<@205751786391207938>", {files: ["./images/send if a woman is talking.mp4"]}); }, 15000)
+    // setInterval(function(){ channel.send("<@205751786391207938>", {files: ["./images/send if a woman is talking.mp4"]}); }, 15000)
 
     console.log(`ready`)
     // bot.user.setActivity('ur mom lol', {type: 'COMPETING'});
