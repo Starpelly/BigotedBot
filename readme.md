@@ -1,5 +1,7 @@
 # BigotedBot v1.0
 
+Welcome to spaghetti code the repository.
+
 1) Install nodejs
 2) Download or clone repository
 3) Edit token in `botsettings.json` with another bot token
